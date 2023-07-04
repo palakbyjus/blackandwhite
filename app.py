@@ -2,6 +2,7 @@
 import os
 from flask import  Flask, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
+# class 265
 import cv2
 import numpy as np
 
@@ -18,7 +19,7 @@ def load_form():
 def upload_image():
     file = request.files['file']
     filename = secure_filename(file.filename)
-
+    # class 265
     file_data = make_grayscale(file.read())
     with open(os.path.join('static/', filename),
               'wb') as f:
@@ -28,7 +29,7 @@ def upload_image():
     return render_template('upload.html', filename=filename, message = display_message)
 
 
-
+# class 265
 def make_grayscale(input_image):
 
     image_array = np.fromstring(input_image, dtype='uint8')
@@ -44,7 +45,7 @@ def make_grayscale(input_image):
     print('Status:',status)
 
     return output_image
-
+# class 265 till here
 
 @app.route('/display/<filename>')
 def display_image(filename):
